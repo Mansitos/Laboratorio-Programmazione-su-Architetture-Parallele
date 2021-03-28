@@ -1,0 +1,13 @@
+nvcc --help 		-> Per aiuti sui comandi
+
+nvcc <nome_file.cu>	-> Semplice compilazione
+
+--------------------------------------------------------------------------------------------------------
+Ricordarsi variabile d'ambiente PATH: (o nvcc da errore di compilazione)
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\bin\Hostx64\x64
+
+--------------------------------------------------------------------------------------------------------
+Per fixare l'installazione di CUDA -> può fare conflitto con i driver già installati, 
+				      ho fixato disinstallando tutto e reinstallando nuovamente 
+                                      dall'installer di CUDA
