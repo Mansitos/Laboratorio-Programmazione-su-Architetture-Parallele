@@ -11,3 +11,6 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 Per fixare l'installazione di CUDA -> può fare conflitto con i driver già installati, 
 				      ho fixato disinstallando tutto e reinstallando nuovamente 
                                       dall'installer di CUDA
+
+Per fixare nvprof (cupti64.ddl not found) -> aggiungere env.var. path -> 
+					     C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\extras\CUPTI\lib64
