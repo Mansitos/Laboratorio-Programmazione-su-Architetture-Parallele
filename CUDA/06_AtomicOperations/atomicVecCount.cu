@@ -8,7 +8,7 @@ Scrivere un programma che dato un array di N intery vec[] e un valore intero x c
 */
 
 #include <stdio.h>
-#define N 16390 // temp, should be arg.
+#define N 16390
 #define NumThPerBlock 512
 #define RandomMaxRange 100 // l'array verrà popolato con int random tra 0 e RandomMaxRange
 #define value 50 // il valore da cercare (dev'essere int e compreso >0 <RandomMaxRange)
@@ -77,7 +77,6 @@ int main (void){
     printf("\ndev counter with atomic-add: %d",device_counter[0]);
     printf("\ndev counter without atomic-add: %d",device_counter[1]);
     printf("\nhost counter: %d", host_counter);
-
 
     return 0;
 
