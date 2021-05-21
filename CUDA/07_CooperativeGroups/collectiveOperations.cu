@@ -68,11 +68,11 @@ int main (void){
     int host_sum = 0;
 
     for(int i=0; i<n; i++){
-        data[i] = 1.0; //rand() % RandomMaxRange;
+        data[i] = rand() % 100;
         host_sum+=data[i];
     }
 
-    printf("Host computations finished");
+    printf("\n -- Host computations finished\n");
 
     // call della reduction
     sum_kernel_block<<<nBlocks, blockSize, sharedBytes>>>(d_sum, d_data, n);
@@ -81,6 +81,12 @@ int main (void){
 
     printf("\nHost says: Array length: %d | sum should be: %d\n",n,host_sum);
     printf("Device says: Result: %d\n",d_sum[0]);
+
+    if(host_sum==d_sum[0]){
+        printf("They match :)\n");
+    }else{
+        printf("Something wrong in GPU code.... :( \n");
+    }
     
     return 0;
 }
