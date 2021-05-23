@@ -22,6 +22,11 @@ static void HandleError( cudaError_t err, const char *file, int line ) {
 __device__ float calculatePartialSum(const float* array, unsigned int N){
     __shared__ float result;    // per block variable
 
+    if(threadIdx.x == 0) {  // initializing result shared var (only first thread of each block performs initialization)
+        result=0;
+    }
+    __syncthreads();    // all threads wait var. result to be initialized
+
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
     int low = blockIdx.x * blockDim.x;
     int high = low + blockDim.x;
@@ -73,14 +78,14 @@ __global__ void sum(const float* array, unsigned int N, volatile float* result, 
     // corretto di isLastBlockDone.
     __syncthreads();
     if (isLastBlockDone) {
-        // L’ultimo blocco che esegue, somma le somme parziali
-        // memorizzate in result[0 .. gridDim.x-1]
-        float totalSum = calculateTotalSum(result,NumBlocks);
         if (threadIdx.x == 0) {
-        // Il thread 0 dell’ultimo block salva il risultato finale in global mem
-        // e azzera count
-        result[0] = totalSum;
-        count = 0;
+            // L’ultimo blocco che esegue, somma le somme parziali
+            // memorizzate in result[0 .. gridDim.x-1]
+            float totalSum = calculateTotalSum(result,NumBlocks);
+            // Il thread 0 dell’ultimo block salva il risultato finale in global mem
+            // e azzera count
+            result[0] = totalSum;
+            count = 0;
         }
     }
 }   
