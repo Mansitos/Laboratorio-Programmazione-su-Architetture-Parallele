@@ -74,8 +74,7 @@ __global__ void sum(const float* array, unsigned int N, volatile float* result, 
         // eseguito la atomicInc()
         isLastBlockDone = (value == (gridDim.x - 1));
     }
-    // Sincronizzazione affinchè ogni thread legga il valore
-    // corretto di isLastBlockDone.
+    // Sincronizzazione affinchè ogni thread legga il valore corretto di isLastBlockDone.
     __syncthreads();
     if (isLastBlockDone) {
         if (threadIdx.x == 0) {
