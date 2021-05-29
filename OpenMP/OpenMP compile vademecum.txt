@@ -1,5 +1,6 @@
-g++ <nome_file.cpp> -fopenmp
+g++ <nome_file.cpp> -fopenmp  (o gcc - ok openMP >2.0)
 
+Oppure:
 Utilizzo del compilatore cl di Microsoft Visual Studio (fino openmp 2.0)
 
 cl <nome_file.cpp> /openmp  -> per compilare codice cpp con direttive openmp
