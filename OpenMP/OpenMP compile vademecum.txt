@@ -1,0 +1,13 @@
+g++ <nome_file.cpp> -fopenmp
+
+Utilizzo del compilatore cl di Microsoft Visual Studio (fino openmp 2.0)
+
+cl <nome_file.cpp> /openmp  -> per compilare codice cpp con direttive openmp
+
+--------------------------------------------------------------------------------------------------------
+Ricordarsi di settare tutte le opportune variabili d'ambiente...
+OPPURE:
+
+Aprire/Utilizzare il cmd <<x64 Native Tools Command Prompt for VS 2019>>
+(CMD con variabili d'ambiente inizializzate per quella sessione - per sviluppo in x64 win)
+

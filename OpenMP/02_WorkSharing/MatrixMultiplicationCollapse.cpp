@@ -1,3 +1,5 @@
+// Same but with collapes(n)
+
 #include <stdio.h>
 #include <iostream>
 #include <omp.h>
@@ -18,7 +20,7 @@ using namespace std;
     // inizializzazione delle matrici in parallelo
     #pragma omp parallel shared (a, b, c) num_threads(4)
 
-    #pragma omp for schedule(static)
+    #pragma omp for schedule(static) collapse(2)
     for(int i = 0; i<dim; i++){
         for(int j = 0; j<dim; j++){
             a[i][j] = rand() % 3 + 1;
@@ -37,7 +39,7 @@ using namespace std;
     // moltiplicazione in paralallelo
     #pragma omp parallel shared (a, b, c) num_threads(4)
 
-    #pragma omp for schedule(static)
+    #pragma omp for schedule(static) collapse(3)
     for (int i = 0; i < dim; i++) {
         for (int j = 0; j < dim; j++) {
             for (int k = 0; k < dim; k++) {
@@ -46,7 +48,7 @@ using namespace std;
         }
     }
 
-    printf("Without collapse directive C=A*B:\n");
+    printf("With collapse directiveC=A*B:\n");
     printMatrix(c);
 } // main end
 
